@@ -2,8 +2,8 @@ import { create } from "zustand";
 
 interface useStoreModalStore {
     isOpen: boolean;
-    onOpen: ({ item, desk }: { item: string; desk: string }) => void;
-    onclose: () => void;
+    onOpen: () => void;
+    onClose: () => void;
     title: string;
     description: string;
 }
@@ -12,6 +12,6 @@ export const useStoreModal = create<useStoreModalStore>((set) => ({
     isOpen: false,
     title: "",
     description: "",
-    onOpen: ({ item, desk }) => set({ isOpen: true, title: item, description: desk }),
-    onclose: () => set({ isOpen: false }),
+    onOpen: () => set({ isOpen: true}),
+    onClose: () => set({ isOpen: false }),
 }));
