@@ -14,7 +14,6 @@ const SetupPage = () => {
     return (
         <div className="p-4">
             <Button onClick={() => handler()}>Open Modal</Button>
-            
         </div>
     );
 };
