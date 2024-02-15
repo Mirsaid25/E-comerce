@@ -1,6 +1,11 @@
 "use client";
 
-import { Check, ChevronsUpDown, PlusCircle, Store as StoreIcon } from "lucide-react";
+import {
+    Check,
+    ChevronsUpDown,
+    PlusCircle,
+    Store as StoreIcon,
+} from "lucide-react";
 import { Store } from "@prisma/client";
 
 import {
@@ -96,11 +101,13 @@ export default function StoreSwitcher({
                     <CommandSeparator />
                     <CommandList>
                         <CommandGroup>
-                            <CommandItem onSelect={()=> {
-                                setOpen(false);
-                                storeModal.onOpen();
-                            }}>
-                                <PlusCircle className="mr-2 h-5 w-5"/>
+                            <CommandItem
+                                onSelect={() => {
+                                    setOpen(false);
+                                    storeModal.onOpen();
+                                }}
+                            >
+                                <PlusCircle className="mr-2 h-5 w-5" />
                                 Create Store
                             </CommandItem>
                         </CommandGroup>
