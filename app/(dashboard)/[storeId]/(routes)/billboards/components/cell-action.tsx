@@ -3,8 +3,8 @@
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { Copy, Edit, MoreHorizontal, Trash } from "lucide-react";
-import { useState } from "react";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -24,7 +24,7 @@ interface CellActionProps {
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
     const router = useRouter();
     const params = useParams();
-
+    
     const [open, setOpen] = useState(false);
     const [loading, setLodaing] = useState(false);
 
