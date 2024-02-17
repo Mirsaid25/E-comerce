@@ -6,15 +6,15 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import { BillboardColumn, columns } from "./columns";
+import { CategoryColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
 import ApiList from "@/components/ui/api-list";
 
-interface BillboardClientProps {
-    data: BillboardColumn[];
+interface CategoryClientProps {
+    data: CategoryColumn[];
 }
 
-const BillboardClient: React.FunctionComponent<BillboardClientProps> = ({
+const CategoryClient: React.FunctionComponent<CategoryClientProps> = ({
     data,
 }) => {
     const router = useRouter();
@@ -24,12 +24,12 @@ const BillboardClient: React.FunctionComponent<BillboardClientProps> = ({
         <>
             <div className="flex items-center justify-between">
                 <Heading
-                    title={`Billboards (${data.length})`}
-                    description="Manage billboards for your store"
+                    title={`Categories (${data.length})`}
+                    description="Manage categories for your store"
                 />
                 <Button
                     onClick={() =>
-                        router.push(`/${params.storeId}/billboards/new`)
+                        router.push(`/${params.storeId}/categories/new`)
                     }
                 >
                     <Plus className="mr-3 h-4 w-4" />
@@ -37,12 +37,12 @@ const BillboardClient: React.FunctionComponent<BillboardClientProps> = ({
                 </Button>
             </div>
             <Separator />
-            <DataTable searchKey="label" columns={columns} data={data}/>
-            <Heading title="API" description="API calls for Billboards"/>
+            <DataTable searchKey="name" columns={columns} data={data}/>
+            <Heading title="API" description="API calls for Categories"/>
             <Separator />
-            <ApiList entityIdName="billboardId" entityName="billboards"/>
+            <ApiList entityIdName="categoryId" entityName="categories"/>
         </>
     );
 };
 
-export default BillboardClient;
+export default CategoryClient;
