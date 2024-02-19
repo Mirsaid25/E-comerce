@@ -14,7 +14,7 @@ interface ProductClientProps {
     data: ProductColumn[];
 }
 
-const productClient: React.FunctionComponent<ProductClientProps> = ({
+const ProductClient: React.FunctionComponent<ProductClientProps> = ({
     data,
 }) => {
     const router = useRouter();
@@ -45,4 +45,4 @@ const productClient: React.FunctionComponent<ProductClientProps> = ({
     );
 };
 
-export default productClient;
+export default ProductClient;
