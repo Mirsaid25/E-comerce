@@ -74,8 +74,8 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData, billboa
             } else {
                 await axios.post(`/api/${params.storeId}/categories`, data);
             }
-            router.refresh();
             router.push(`/${params.storeId}/categories`);
+            router.refresh();
             toast.success(toastMessage);
         } catch (err) {
             toast.error("Something went wrong.");
