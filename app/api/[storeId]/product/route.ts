@@ -7,18 +7,11 @@ export async function GET(
     { params }: { params: { id: string } }
 ) {
     try {
-        if (!params.id) {
-            return new NextResponse("ProductId is required", { status: 400 })
-        }
-        const product =  await prismadb.product.findUnique({
+        console.log(params);
+        
+        const product =  await prismadb.product.findFirst({
             where: { id: params.id },
-            include:{
-                images:true,
-                category:true,
-                size:true,
-                color:true
-            }
-
+        
         })
     
 
