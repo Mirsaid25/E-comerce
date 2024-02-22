@@ -13,7 +13,6 @@ export async function GET(
             where: { id: params.id },
         
         })
-    
 
         return NextResponse.json(product)
 

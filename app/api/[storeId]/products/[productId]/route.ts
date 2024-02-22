@@ -6,6 +6,8 @@ export async function GET(
     req: Request,
     { params }: { params: { productId: string } }
 ) {
+    console.log(params);
+    
     try {
         if (!params.productId) {
             return new NextResponse("ProductId is required", { status: 400 })
@@ -34,7 +36,7 @@ export async function GET(
 
 export async function PATCH(
     req: Request,
-    { params }: { params: { storeId: string, productsId: string } }
+    { params }: { params: { storeId: string, productId: string } }
 ) {
     try {
         const { userId } = auth();
@@ -79,7 +81,7 @@ export async function PATCH(
             return new NextResponse("SizeId is required", { status: 400 });
         }
 
-        if (!params.productsId) {
+        if (!params.productId) {
             return new NextResponse("ProductId is required", { status: 400 })
         }
 
@@ -96,7 +98,7 @@ export async function PATCH(
 
         await prismadb.product.update({
             where: {
-                id: params.productsId,
+                id: params.productId,
             },
             data: {
                 name,
@@ -117,7 +119,7 @@ export async function PATCH(
 
         const product = await prismadb.product.update({
             where: {
-                id: params.productsId,
+                id: params.productId,
             },
             data: {
                 images: {
@@ -140,7 +142,7 @@ export async function PATCH(
 
 export async function DELETE(
     req: Request,
-    { params }: { params: { storeId: string, productsId: string } }
+    { params }: { params: { storeId: string, productId: string } }
 ) { 
     try {
         const { userId } = auth();
@@ -149,7 +151,7 @@ export async function DELETE(
             return new NextResponse("Unauthenticated", { status: 401 })
         }
 
-        if (!params.productsId) {
+        if (!params.productId) {
             return new NextResponse("ProductId is required", { status: 400 })
         }
 
@@ -166,7 +168,7 @@ export async function DELETE(
 
         const product = await prismadb.product.deleteMany({
             where: {
-                id: params.productsId,
+                id: params.productId,
             }
         });
 
